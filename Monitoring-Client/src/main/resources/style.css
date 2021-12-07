@@ -1,0 +1,11 @@
+body {
+    background: #121212;
+}
+* {
+    color: white;
+    font-family: "JetBrains Mono", sans-serif;
+}
+@font-face {
+    font-family: "JetBrains Mono";
+    src: url("JetBrainsMonoNL-Regular.ttf") format('truetype');
+}

@@ -1,15 +1,18 @@
 package net.redstonecraft.systemmonitoring
 
 import io.ktor.http.cio.websocket.*
+import io.ktor.utils.io.errors.*
 import kotlinx.coroutines.runBlocking
+import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import oshi.SystemInfo
 import oshi.hardware.PowerSource
+import java.net.URL
 import java.util.*
+import kotlin.math.absoluteValue
 
 object SystemMonitoring {
-
 
     val ws = mutableListOf<DefaultWebSocketSession>()
 
@@ -26,21 +29,46 @@ object SystemMonitoring {
     private val timer = Timer()
 
     private fun generateReport(): Data {
+        val ohmData = getRequest("http://localhost:8085/data.json")
+        val openHardwareMonitor = if (ohmData != null) Json.decodeFromString<OpenHardwareMonitor>(ohmData) else null
         val info = SystemInfo()
         if (prevTicks == null) {
             prevTicks = info.hardware.processor.processorCpuLoadTicks
         }
         val cpuLoad = info.hardware.processor.getProcessorCpuLoadBetweenTicks(prevTicks)
         prevTicks = info.hardware.processor.processorCpuLoadTicks
-        val cpuClock = info.hardware.processor.currentFreq
         return Data(
             cpu = info.hardware.processor.logicalProcessors.map {
                 CpuData(
                     core = it.processorNumber,
                     usage = cpuLoad[it.processorNumber],
-                    clock = cpuClock[it.processorNumber],
+                    clock = openHardwareMonitor
+                        ?.Children?.getOrNull(0)
+                        ?.Children?.find { i -> i.type == "cpu" }
+                        ?.Children?.find { i -> i.Text == "Clocks" }
+                        ?.Children?.find { i -> i.Text == "CPU Core #${
+                            if (info.hardware.processor.physicalProcessorCount == info.hardware.processor.logicalProcessorCount) { 
+                                it.processorNumber + 1
+                            } else {
+                                (it.processorNumber / 2) + 1
+                            }
+                        }" }
+                        ?.Value?.replace(" MHz", "")?.replace(",", ".")
+                        ?.toDouble()?.let { d -> d * 1000000 }?.toLong() ?: 0L,
                     maxClock = info.hardware.processor.maxFreq,
-                    voltage = info.hardware.sensors.cpuVoltage,
+                    wattage = openHardwareMonitor
+                        ?.Children?.getOrNull(0)
+                        ?.Children?.find { i -> i.type == "cpu" }
+                        ?.Children?.find { i -> i.Text == "Powers" }
+                        ?.Children?.find { i -> i.Text == "CPU Core #${
+                            if (info.hardware.processor.physicalProcessorCount == info.hardware.processor.logicalProcessorCount) {
+                                it.processorNumber + 1
+                            } else {
+                                (it.processorNumber / 2) + 1
+                            }
+                        }" }
+                        ?.Value?.replace(" W", "")?.replace(",", ".")
+                        ?.toDoubleOrNull() ?: .0,
                     temp = info.hardware.sensors.cpuTemperature
                 )
             },
@@ -130,11 +158,84 @@ object SystemMonitoring {
             gpu = info.hardware.graphicsCards.map {
                 GpuData(
                     name = it.name,
-                    memory = it.vRam,
-                    info = "${it.vendor} ${it.deviceId} ${it.versionInfo}"
+//                    driver = openHardwareMonitor
+//                        ?.Children?.getOrNull(0)
+//                        ?.Children?.map { it.Text }?.joinToString(",") ?: "",
+                    driver = it.versionInfo.split("=")[1],
+                    clock = openHardwareMonitor
+                        ?.Children?.getOrNull(0)
+                        ?.Children?.find { i -> it.name.split("(").map { s -> s.split(")") }.flatten().any { s -> s in i.Text } }
+                        ?.Children?.find { i -> i.Text == "Clocks" }
+                        ?.Children?.find { i -> i.Text == "GPU Core" }
+                        ?.Value?.replace(" MHz", "")?.replace(",", ".")
+                        ?.toDoubleOrNull()?.let { d -> d * 1000000 }?.toLong() ?: 0,
+                    memoryClock = openHardwareMonitor
+                        ?.Children?.getOrNull(0)
+                        ?.Children?.find { i -> it.name.split("(").map { s -> s.split(")") }.flatten().any { s -> s in i.Text } }
+                        ?.Children?.find { i -> i.Text == "Clocks" }
+                        ?.Children?.find { i -> i.Text == "GPU Memory" }
+                        ?.Value?.replace(" MHz", "")?.replace(",", ".")
+                        ?.toDoubleOrNull()?.let { d -> d * 1000000 }?.toLong() ?: 0,
+                    temp = openHardwareMonitor
+                        ?.Children?.getOrNull(0)
+                        ?.Children?.find { i -> it.name.split("(").map { s -> s.split(")") }.flatten().any { s -> s in i.Text } }
+                        ?.Children?.find { i -> i.Text == "Temperatures" }
+                        ?.Children?.find { i -> i.Text == "GPU Core" }
+                        ?.Value?.replace(" °C", "")?.replace(",", ".")
+                        ?.toDoubleOrNull() ?: .0,
+                    usage = openHardwareMonitor
+                        ?.Children?.getOrNull(0)
+                        ?.Children?.find { i -> it.name.split("(").map { s -> s.split(")") }.flatten().any { s -> s in i.Text } }
+                        ?.Children?.find { i -> i.Text == "Load" }
+                        ?.Children?.find { i -> i.Text == "GPU Core" }
+                        ?.Value?.replace(" %", "")?.replace(",", ".")
+                        ?.toDoubleOrNull() ?: .0,
+                    memory = MemoryData(
+                        available = openHardwareMonitor
+                            ?.Children?.getOrNull(0)
+                            ?.Children?.find { i -> it.name.split("(").map { s -> s.split(")") }.flatten().any { s -> s in i.Text } }
+                            ?.Children?.find { i -> i.Text == "Data" }
+                            ?.Children?.find { i -> i.Text == "GPU Memory Total" }
+                            ?.Value?.replace(" MB", "")?.replace(",", ".")
+                            ?.toDoubleOrNull()?.let { d -> d * 1000000 }?.toLong() ?: 0,
+                        used = openHardwareMonitor
+                            ?.Children?.getOrNull(0)
+                            ?.Children?.find { i -> it.name.split("(").map { s -> s.split(")") }.flatten().any { s -> s in i.Text } }
+                            ?.Children?.find { i -> i.Text == "Data" }
+                            ?.Children?.find { i -> i.Text == "GPU Memory Used" }
+                            ?.Value?.replace(" MB", "")?.replace(",", ".")
+                            ?.toDoubleOrNull()?.let { d -> d * 1000000 }?.toLong() ?: 0,
+                        free = openHardwareMonitor
+                            ?.Children?.getOrNull(0)
+                            ?.Children?.find { i -> it.name.split("(").map { s -> s.split(")") }.flatten().any { s -> s in i.Text } }
+                            ?.Children?.find { i -> i.Text == "Data" }
+                            ?.Children?.find { i -> i.Text == "GPU Memory Free" }
+                            ?.Value?.replace(" MB", "")?.replace(",", ".")
+                            ?.toDoubleOrNull()?.let { d -> d * 1000000 }?.toLong() ?: 0,
+                        percent = ((openHardwareMonitor
+                            ?.Children?.getOrNull(0)
+                            ?.Children?.find { i -> it.name.split("(").map { s -> s.split(")") }.flatten().any { s -> s in i.Text } }
+                            ?.Children?.find { i -> i.Text == "Data" }
+                            ?.Children?.find { i -> i.Text == "GPU Memory Used" }
+                            ?.Value?.replace(" MB", "")?.replace(",", ".")
+                            ?.toDoubleOrNull() ?: .0) / (openHardwareMonitor
+                            ?.Children?.getOrNull(0)
+                            ?.Children?.find { i -> it.name.split("(").map { s -> s.split(")") }.flatten().any { s -> s in i.Text } }
+                            ?.Children?.find { i -> i.Text == "Data" }
+                            ?.Children?.find { i -> i.Text == "GPU Memory Total" }
+                            ?.Value?.replace(" MB", "")?.replace(",", ".")
+                            ?.toDoubleOrNull() ?: .0)).let { d -> if (d.isNaN()) .0 else d }
+                    ),
+                    wattage = openHardwareMonitor
+                        ?.Children?.getOrNull(0)
+                        ?.Children?.find { i -> it.name.split("(").map { s -> s.split(")") }.flatten().any { s -> s in i.Text } }
+                        ?.Children?.find { i -> i.Text == "Powers" }
+                        ?.Children?.getOrNull(0)
+                        ?.Value?.replace(" W", "")?.replace(",", ".")
+                        ?.toDoubleOrNull() ?: .0
                 )
             },
-            os = "${info.operatingSystem.family} ${info.operatingSystem.manufacturer} ${info.operatingSystem.versionInfo.version}${if (info.operatingSystem.versionInfo.codeName == null) " " else " " + info.operatingSystem.versionInfo.codeName + " "}${info.operatingSystem.versionInfo.buildNumber}",
+            os = "${info.operatingSystem.manufacturer} ${info.operatingSystem.family} ${info.operatingSystem.versionInfo.version} ${if (info.operatingSystem.versionInfo.codeName == null) "" else info.operatingSystem.versionInfo.codeName} ${info.operatingSystem.versionInfo.buildNumber}".replace("  ", "").replace("  ", ""),
             uptime = info.operatingSystem.systemUptime,
             power = info.hardware.powerSources.map {
                 it.updateAttributes()
@@ -153,12 +254,12 @@ object SystemMonitoring {
                     },
                     chargePercent = it.remainingCapacityPercent,
                     health = it.maxCapacity / it.designCapacity.toDouble(),
-                    wattage = it.amperage * it.voltage,
+                    wattage = (it.amperage * it.voltage).absoluteValue,
                     cycles = it.cycleCount,
                     name = it.deviceName,
                     temp = it.temperature,
                     chem = it.chemistry,
-                    remaining = it.timeRemainingInstant.toLong()
+                    remaining = it.timeRemainingEstimated.toLong().let { l -> if (l < 0) null else l }?.absoluteValue ?: -1
                 )
             }
         )
@@ -174,6 +275,15 @@ object SystemMonitoring {
                 }
             }
         }, 0, 1000)
+    }
+
+    @Suppress("SameParameterValue")
+    private fun getRequest(url: String): String? {
+        return try {
+            URL(url).openConnection().getInputStream().use { it.readAllBytes().decodeToString() }
+        } catch (e: IOException) {
+            null
+        }
     }
 
 }

@@ -18,7 +18,7 @@ fun Application.configureRouting() {
         }
         install(StatusPages) {
             exception<Throwable> { cause ->
-                call.respond(HttpStatusCode.InternalServerError, cause.stackTraceToString())
+                call.respond(HttpStatusCode.InternalServerError, cause.cause?.stackTraceToString() ?: cause.stackTraceToString())
             }
         }
     }

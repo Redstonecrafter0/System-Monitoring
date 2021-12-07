@@ -1,5 +1,3 @@
-package net.redstonecraft.systemmonitoring
-
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -106,18 +104,3 @@ data class PowerData(
     val chem: String,
     val remaining: Long
 )
-
-@Serializable
-data class OpenHardwareMonitor(
-    val id: Int,
-    val Text: String,
-    val Children: List<OpenHardwareMonitor>,
-    val Min: String,
-    val Value: String,
-    val Max: String,
-    val ImageURL: String
-) {
-
-    val type by lazy { if (ImageURL == "") "" else ImageURL.split("/")[1].split(".")[0] }
-
-}
