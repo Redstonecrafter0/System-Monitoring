@@ -1,9 +1,54 @@
+:root {
+    --anim-time: 100ms;
+    --rot: 135deg;
+}
 body {
     background: #121212;
 }
 * {
     color: white;
     font-family: "JetBrains Mono", sans-serif;
+}
+.mhz::after {
+    content: ' MHz';
+}
+.circle-wrap {
+    --size: 75px;
+    --border: 5px;
+    width: var(--size);
+    height: var(--size);
+    background: white;
+    border-radius: 50%;
+}
+.circle-wrap .circle .mask, .circle-wrap .circle .fill {
+    width: var(--size);
+    height: var(--size);
+    position: absolute;
+    border-radius: 50%;
+}
+.circle-wrap .circle .mask {
+    clip: rect(0px, var(--size), var(--size), calc(var(--size) / 2));
+}
+.circle-wrap .inside-circle {
+    width: calc(var(--size) - var(--border));
+    height: calc(var(--size) - var(--border));
+    border-radius: 50%;
+    background: #121212;
+    line-height: calc(var(--size) - var(--border));
+    text-align: center;
+    margin-top: calc(var(--border) / 2);
+    margin-left: calc(var(--border) / 2);
+    position: absolute;
+    z-index: 100;
+    font-size: calc(calc(var(--size) - var(--border)) / 4);
+}
+.mask .fill {
+    clip: rect(0px, calc(var(--size) / 2), var(--size), 0px);
+}
+.mask.full, .circle .fill {
+    transition: var(--anim-time);
+    transform: rotate(var(--rot));
+    background-color: hsl(calc(var(--rot) * 2 / 3) 100% 50%);
 }
 @font-face {
     font-family: "JetBrains Mono";
