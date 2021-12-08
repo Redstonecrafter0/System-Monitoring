@@ -1,10 +1,13 @@
 import kotlinx.browser.document
+import kotlinx.browser.window
 import kotlinx.html.*
-import kotlinx.html.dom.create
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
-import org.w3c.dom.*
+import org.w3c.dom.WebSocket
+import org.w3c.dom.asList
 import kotlin.math.roundToInt
+
+var lastChange = currentTimeMillis()
 
 fun main() {
     var ws = WebSocket("ws://localhost:1234/api/ws/data")
@@ -12,41 +15,24 @@ fun main() {
         ws = WebSocket("ws://localhost:1234/api/ws/data")
         null
     }
-    document.body?.append(createCpuInfo(CpuData(
-        0,
-        .0,
-        213123132,
-        124124141,
-        .4,
-        1.5
-    )))
+    var animate: (Double) -> Unit = {}
+    animate = { _: Double ->
+        document.getElementsByClassName("core").asList().forEach {
+            val delta = (currentTimeMillis() - lastChange) / 2000.0
+            it.setAttribute("style", "--value: ${(lerp(delta, ((it.getAttribute("style")?.substring(9)?.toDoubleOrNull() ?: .0)), ((it.getAttribute("to")?.toDoubleOrNull() ?: .0) * 100))).roundToInt()}")
+        }
+        window.requestAnimationFrame(animate)
+    }
+    window.requestAnimationFrame(animate)
     ws.onmessage = {
         val data = Json.decodeFromString<Data>(it.data as String)
-        data.cpu.forEach {
-            document.body?.append(createCpuInfo(it))
-        }
+        lastChange = currentTimeMillis()
+        data.cpu.forEach { updateCpuInfo(it) }
+        updateMemory(data.memory)
+        data.memoryInfo.forEachIndexed { index, memoryInfo -> updateMemoryInfo(memoryInfo, index) }
+
+        document.getElementById("os")?.textContent = data.os
+        document.getElementById("uptime")?.textContent = data.uptime.formatTime()
+        null
     }
 }
-
-fun createCpuInfo(data: CpuData): HTMLElement =
-    document.create.div {
-        div {
-            p(classes = "mhz") {
-                + (data.clock / 1000000F).toString()
-            }
-            div(classes = "circle-wrap") {
-                style = "--rot: ${data.usage * 180}deg"
-                div(classes = "circle") {
-                    div(classes = "mask full") {
-                        div(classes = "fill")
-                    }
-                    div(classes = "mask half") {
-                        div(classes = "fill")
-                    }
-                    div(classes = "inside-circle") {
-                        + "${(data.usage * 1000).roundToInt() / 10F}%"
-                    }
-                }
-            }
-        }
-    }

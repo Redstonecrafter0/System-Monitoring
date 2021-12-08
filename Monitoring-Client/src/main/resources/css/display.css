@@ -1,0 +1,3 @@
+.clock::after {
+    content: ' MHz';
+}

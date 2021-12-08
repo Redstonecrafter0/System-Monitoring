@@ -1,0 +1,14 @@
+#cores {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+    width: fit-content;
+    height: 100vh;
+}
+.core {
+    max-width: 100px;
+    text-align: center;
+}
+.core-display::before {
+    content: 'Core #';
+}

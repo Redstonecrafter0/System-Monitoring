@@ -1,0 +1,42 @@
+@import url("cpu.css");
+@import url("display.css");
+@import url("memory.css");
+@import url("memory-info.css");
+@import url("rad-bar.css");
+
+:root {
+    --anim-time: 1000ms;
+    --value: 0;
+}
+body {
+    background: #121212;
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+}
+* {
+    color: white;
+    font-family: "JetBrains Mono", sans-serif;
+}
+#os {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    transform: rotate(-90deg) translateX(calc(50% + .5rem)) translateY(700%);
+    transform-origin: center bottom;
+}
+#uptime {
+    position: fixed;
+    top: 0;
+    right: 0;
+    text-align: right;
+    margin: 3px;
+}
+#uptime::before {
+    content: 'Uptime: '
+}
+@font-face {
+    font-family: "JetBrains Mono";
+    src: url("../JetBrainsMonoNL-Regular.ttf") format('truetype');
+}
