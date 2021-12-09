@@ -23,13 +23,14 @@ body {
     position: fixed;
     bottom: 0;
     right: 0;
-    transform: rotate(-90deg) translateX(calc(50% + .5rem)) translateY(700%);
-    transform-origin: center bottom;
+    text-align: right;
+    transform: rotate(-90deg) translateX(calc(100% + 5px));
+    transform-origin: right bottom;
 }
 #uptime {
     position: fixed;
     top: 0;
-    right: 0;
+    right: 3px;
     text-align: right;
     margin: 3px;
 }

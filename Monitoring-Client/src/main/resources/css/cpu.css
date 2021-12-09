@@ -4,6 +4,7 @@
     grid-gap: 10px;
     width: fit-content;
     height: 100vh;
+    align-content: space-around;
 }
 .core {
     max-width: 100px;
