@@ -158,9 +158,6 @@ object SystemMonitoring {
             gpu = info.hardware.graphicsCards.map {
                 GpuData(
                     name = it.name,
-//                    driver = openHardwareMonitor
-//                        ?.Children?.getOrNull(0)
-//                        ?.Children?.map { it.Text }?.joinToString(",") ?: "",
                     driver = it.versionInfo.split("=")[1],
                     clock = openHardwareMonitor
                         ?.Children?.getOrNull(0)
@@ -235,7 +232,7 @@ object SystemMonitoring {
                         ?.toDoubleOrNull() ?: .0
                 )
             },
-            os = "${info.operatingSystem.manufacturer} ${info.operatingSystem.family} ${info.operatingSystem.versionInfo.version} ${if (info.operatingSystem.versionInfo.codeName == null) "" else info.operatingSystem.versionInfo.codeName} ${info.operatingSystem.versionInfo.buildNumber}".replace("  ", "").replace("  ", ""),
+            os = "${info.operatingSystem.manufacturer} ${info.operatingSystem.family} ${info.operatingSystem.versionInfo.version} ${if (info.operatingSystem.versionInfo.codeName == null) "" else info.operatingSystem.versionInfo.codeName} ${info.operatingSystem.versionInfo.buildNumber}".replace("  ", " ").replace("  ", " ").replace("  ", " "),
             uptime = info.operatingSystem.systemUptime,
             power = info.hardware.powerSources.map {
                 it.updateAttributes()

@@ -7,6 +7,7 @@
     margin-left: 5px;
     align-content: space-evenly;
     height: 100vh;
+    align-content: space-around;
 }
 .core {
     max-width: 150px;

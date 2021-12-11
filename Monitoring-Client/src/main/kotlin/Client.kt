@@ -12,7 +12,12 @@ var lastChange = currentTimeMillis()
 fun main() {
     var ws = WebSocket("ws://localhost:1234/api/ws/data")
     ws.onclose = {
-        ws = WebSocket("ws://localhost:1234/api/ws/data")
+        window.setTimeout({
+            try {
+                ws = WebSocket("ws://localhost:1234/api/ws/data")
+            } catch (e: Throwable) {
+            }
+        }, 10000)
         null
     }
     var animate: (Double) -> Unit = {}
