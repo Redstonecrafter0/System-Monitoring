@@ -1,3 +1,5 @@
+import org.w3c.dom.HTMLElement
+import org.w3c.dom.events.Event
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.roundToInt
@@ -32,6 +34,10 @@ fun Long.formatTime(): String {
     val hour: Long = this / (60 * 60) % 24
     val day: Long = this / (60 * 60 * 24)
     return "$day:${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}:${second.toString().padStart(2, '0')}"
+}
+
+fun HTMLElement.addEventListener(s: String, function: (Event) -> Unit) {
+    addEventListener(s, function, null)
 }
 
 operator fun Long.plus(string: String): String = this.toString() + string
