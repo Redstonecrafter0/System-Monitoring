@@ -1,3 +1,9 @@
 .clock::after {
-    content: ' MHz';
+    content: 'MHz';
+}
+.power::after {
+    content: 'W';
+}
+.temp::after {
+    content: '°C';
 }

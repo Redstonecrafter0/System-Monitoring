@@ -1,0 +1,58 @@
+.gpu {
+    display: grid;
+    grid-template-areas:
+            'i l m c'
+            'i l m mc'
+            'i l m p'
+            'i l m t'
+            'n n n n';
+    height: 150px;
+    margin: 3px;
+}
+.gpu img {
+    grid-area: i;
+    transform: rotate(-90deg);
+    width: 110px;
+    align-self: center;
+}
+.gpu-name {
+    position: relative;
+    grid-area: n;
+}
+.gpu .clock:first-child {
+    grid-area: c;
+}
+.gpu .mem-clock {
+    grid-area: mc;
+}
+.gpu .power {
+    grid-area: p;
+}
+.gpu .temp {
+    grid-area: t;
+}
+.gpu .memory {
+    grid-area: m;
+    width: 10px;
+    height: 100%;
+    background: #555555;
+    transform: translateX(-10px);
+}
+.gpu .load {
+    grid-area: l;
+    position: relative;
+    width: 10px;
+    height: 100%;
+    background: #555555;
+    transform: translateX(-17.5px);
+}
+.gpu-name::after {
+    content: ' (' attr(data-driver) ')';
+    font-size: .75rem;
+}
+.gpu .memory::before {
+    content: attr(data-available);
+    position: absolute;
+    transform: rotate(-90deg);
+    transform-origin: left center;
+}

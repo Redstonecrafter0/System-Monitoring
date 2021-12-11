@@ -13,6 +13,26 @@
     <div id="used-memory"></div>
 </div>
 <div id="memory-info"></div>
+<div id="grid">
+    <div id="gpu" style="grid-area: g">
+        <div class="gpu">
+            <img src="img/gpu.svg" alt="">
+            <span class="gpu-name" data-driver="1.0.0">Name</span>
+            <span class="clock">2173</span>
+            <span class="clock mem-clock">1023</span>
+            <span class="temp">60</span>
+            <span class="load" style="--value: 0">
+                <span class="used-load"></span>
+            </span>
+            <span class="memory" data-used="123GB" data-available="1234GB" style="--value: 0">
+                <span class="memory-percent"></span>
+            </span>
+            <span class="power">15</span>
+        </div>
+    </div>
+    <div id="io" style="grid-area: d"></div>
+    <div id="nio" style="grid-area: n"></div>
+</div>
 <span id="os"></span>
 <span id="uptime"></span>
 <script src="Monitoring-Client.js"></script>

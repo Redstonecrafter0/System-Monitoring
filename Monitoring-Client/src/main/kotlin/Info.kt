@@ -13,21 +13,16 @@ fun updateCpuInfo(data: CpuData) {
     val element = document.getElementById("cpu-${data.core}")
     if (element != null) {
         element.setAttribute("to", (data.usage).toString())
-        element.getElementsByClassName("clock")[0]!!.textContent = (data.clock / 1000000F).toString()
+        val e = element.getElementsByClassName("cpu-rad-progressbar")[0]
+        e?.setAttribute("data-core", data.core.toString())
+        e?.setAttribute("data-freq", (data.clock / 1000000F).toString())
+        e?.setAttribute("data-power", data.wattage.toString())
     } else {
         document.getElementById("cores")!!.append {
             div(classes = "core") {
                 style = "--value: ${(data.usage * 100).roundToInt()}"
                 id = "cpu-${data.core}"
-                div {
-                    p(classes = "core-display") {
-                        +data.core.toString()
-                    }
-                    div(classes = "rad-progressbar")
-                    p(classes = "clock") {
-                        +(data.clock / 1000000F).toString()
-                    }
-                }
+                div(classes = "cpu-rad-progressbar")
             }
         }
     }
@@ -45,12 +40,12 @@ fun updateMemoryInfo(data: MemoryInfo, index: Int) {
         document.getElementById("memory-info")?.append {
             div(classes = "memory-info") {
                 id = "memory-$index"
-                img(src = "memory.svg")
+                img(src = "img/memory.svg")
                 p(classes = "type") {
                     +data.type
                 }
                 p(classes = "bank") {
-                    +data.bank
+                    +data.bank.last().toString()
                 }
                 p(classes = "memory-cap") {
                     +data.available.formatBytes()
