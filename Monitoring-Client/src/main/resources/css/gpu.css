@@ -1,3 +1,7 @@
+#gpu {
+    display: flex;
+    flex-direction: row;
+}
 .gpu {
     display: grid;
     grid-template-areas:
@@ -7,16 +11,20 @@
             'i l m t'
             'n n n n';
     height: 150px;
+    width: 200px;
     margin: 3px;
+    text-align: right;
+    align-items: center;
 }
 .gpu img {
     grid-area: i;
-    transform: rotate(-90deg);
+    transform: rotate(-90deg) translateY(-10px);
     width: 110px;
     align-self: center;
 }
 .gpu-name {
     position: relative;
+    text-align: left;
     grid-area: n;
 }
 .gpu .clock:first-child {
@@ -38,9 +46,17 @@
     background: #555555;
     transform: translateX(-10px);
 }
+.gpu .bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 10px;
+    height: calc(var(--value) * 100%);
+    background: hsl(calc(120deg - calc(var(--value) * 120deg)) 100% 50%);
+    transition: var(--anim-time);
+}
 .gpu .load {
     grid-area: l;
-    position: relative;
     width: 10px;
     height: 100%;
     background: #555555;
@@ -49,10 +65,4 @@
 .gpu-name::after {
     content: ' (' attr(data-driver) ')';
     font-size: .75rem;
-}
-.gpu .memory::before {
-    content: attr(data-available);
-    position: absolute;
-    transform: rotate(-90deg);
-    transform-origin: left center;
 }

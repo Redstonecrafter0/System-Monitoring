@@ -12,7 +12,8 @@ data class Data(
     val gpu: List<GpuData>,
     val os: String,
     val power: List<PowerData>,
-    val uptime: Long
+    val uptime: Long,
+    val media: UIMediaInfo
 )
 
 @Serializable
@@ -121,3 +122,34 @@ data class OpenHardwareMonitor(
     val type by lazy { if (ImageURL == "") "" else ImageURL.split("/")[1].split(".")[0] }
 
 }
+
+@Serializable
+data class UIMediaInfo(
+    val on: Boolean,
+    val playing: Boolean,
+    val album: String,
+    val title: String,
+    val artist: String,
+    val duration: String,
+    val currentTime: String,
+    val img: String?,
+    val progress: String
+)
+
+@Serializable
+data class MediaInfo(
+    val state: MediaState,
+    val album: String = "",
+    val title: String = "",
+    val artist: String = "",
+    val artwork: List<MediaArtwork> = emptyList(),
+    val duration: Double? = .0,
+    val currentTime: Double = .0
+)
+
+enum class MediaState {
+    NONE, PLAYING, PAUSED
+}
+
+@Serializable
+data class MediaArtwork(val sizes: String, val src: String, val type: String)

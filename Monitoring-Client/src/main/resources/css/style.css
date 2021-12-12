@@ -3,6 +3,7 @@
 @import url("display.css");
 @import url("memory.css");
 @import url("memory-info.css");
+@import url("media.css");
 
 :root {
     --anim-time: 1000ms;
@@ -29,6 +30,7 @@ body {
 }
 #grid {
     display: grid;
+    width: 100%;
     grid-template-areas:
             'g g g'
             'd n p';

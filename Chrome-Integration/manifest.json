@@ -1,0 +1,19 @@
+{
+  "name": "Monitoring Integration",
+  "description": "Monitoring Integration",
+  "version": "1.0",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": [
+    "declarativeContent"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://music.youtube.com/*"],
+      "js": ["integration.js"],
+      "run_at": "document_end"
+    }
+  ]
+}

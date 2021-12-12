@@ -4,6 +4,7 @@ import kotlinx.html.id
 import kotlinx.html.js.div
 import kotlinx.html.js.img
 import kotlinx.html.js.p
+import kotlinx.html.js.span
 import kotlinx.html.style
 import org.w3c.dom.get
 import kotlin.math.roundToInt
@@ -59,4 +60,49 @@ fun updateMemoryInfo(data: MemoryInfo, index: Int) {
             }
         }
     }
+}
+
+fun updateGpuData(data: GpuData, index: Int) {
+    val element = document.getElementById("gpu-$index")
+    if (element == null) {
+        document.getElementById("gpu")?.append {
+            div(classes = "gpu") {
+                id = "gpu-$index"
+                img(src = "img/gpu.svg")
+                span(classes = "gpu-name") {
+                    +data.name
+                    attributes["data-driver"] = data.driver
+                }
+                span(classes = "clock") {
+                    +(data.clock / 1000000L).toString()
+                }
+                span(classes = "clock clock-memclock") {
+                    +(data.memoryClock / 1000000L).toString()
+                }
+                span(classes = "temp") {
+                    +data.temp.toString()
+                }
+                span(classes = "load") {
+                    span(classes = "bar")
+                }
+                span(classes = "memory") {
+                    span(classes = "bar")
+                }
+                span(classes = "power") {
+                    +data.wattage.toString()
+                }
+            }
+        }
+    } else {
+        element.getElementsByClassName("clock")[0]?.textContent = (data.clock / 1000000L).toString()
+        element.getElementsByClassName("clock")[1]?.textContent = (data.memoryClock / 1000000L).toString()
+        element.getElementsByClassName("temp")[0]?.textContent = data.temp.toString()
+        element.getElementsByClassName("load")[0]?.setAttribute("style", "--value: ${data.usage / 100}")
+        element.getElementsByClassName("memory")[0]?.setAttribute("style", "--value: ${data.memory.percent}")
+        element.getElementsByClassName("power")[0]?.textContent = data.wattage.toString()
+    }
+}
+
+fun updateMedia(data: UIMediaInfo) {
+    Media.instance.update(data)
 }

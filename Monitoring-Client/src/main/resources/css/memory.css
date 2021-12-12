@@ -17,7 +17,7 @@
 }
 #memory-max {
     position: absolute;
-    transform: rotate(-90deg) translateY(-.6rem);
+    transform: rotate(-90deg) translateY(-.35rem);
     z-index: 1;
     right: 0;
     transform-origin: right center;
@@ -25,7 +25,7 @@
 #memory-current {
     position: absolute;
     bottom: 0;
-    transform: rotate(-90deg) translateY(-.6rem) translateX(100%);
+    transform: rotate(-90deg) translateY(-.35rem) translateX(100%);
     z-index: 1;
     right: 0;
     transform-origin: right center;

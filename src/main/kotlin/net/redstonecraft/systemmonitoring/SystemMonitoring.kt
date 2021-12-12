@@ -28,7 +28,35 @@ object SystemMonitoring {
 
     private val timer = Timer()
 
+    var mediaState = UIMediaInfo(
+        on = false,
+        playing = false,
+        album = "",
+        title = "",
+        artist = "",
+        duration = "",
+        currentTime = "",
+        img = "",
+        progress = ""
+    )
+
+    var lastMediaState = System.currentTimeMillis()
+
     private fun generateReport(): Data {
+        if (System.currentTimeMillis() - lastMediaState > 10000) {
+            mediaState = UIMediaInfo(
+                on = false,
+                playing = false,
+                album = "",
+                title = "",
+                artist = "",
+                duration = "",
+                currentTime = "",
+                img = "",
+                progress = ""
+            )
+            lastMediaState = System.currentTimeMillis()
+        }
         val ohmData = getRequest("http://localhost:8085/data.json")
         val openHardwareMonitor = if (ohmData != null) Json.decodeFromString<OpenHardwareMonitor>(ohmData) else null
         val info = SystemInfo()
@@ -258,7 +286,8 @@ object SystemMonitoring {
                     chem = it.chemistry,
                     remaining = it.timeRemainingEstimated.toLong().let { l -> if (l < 0) null else l }?.absoluteValue ?: -1
                 )
-            }
+            },
+            media = mediaState
         )
     }
 

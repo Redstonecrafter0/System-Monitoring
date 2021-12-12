@@ -1,0 +1,10 @@
+mo-media {
+    width: 500px;
+    height: 85px;
+    background-size: cover;
+    position: fixed;
+    top: 0;
+    right: 0;
+    transform: scale(.75);
+    transform-origin: top right;
+}

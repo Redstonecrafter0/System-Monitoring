@@ -105,7 +105,7 @@ fun main() {
     }
     var animate: (Double) -> Unit = {}
     val background = Background(canvas = document.getElementById("background") as HTMLCanvasElement)
-    animate = { _: Double ->
+    animate = { _ ->
         document.getElementsByClassName("core").asList().forEach {
             val delta = (currentTimeMillis() - lastChange) / 2000.0
             it.setAttribute("style", "--value: ${(lerp(delta, ((it.getAttribute("style")?.substring(9)?.toDoubleOrNull() ?: .0)), ((it.getAttribute("to")?.toDoubleOrNull() ?: .0) * 100))).roundToInt()}")
@@ -120,6 +120,8 @@ fun main() {
         data.cpu.forEach { updateCpuInfo(it) }
         updateMemory(data.memory)
         data.memoryInfo.forEachIndexed { index, memoryInfo -> updateMemoryInfo(memoryInfo, index) }
+        data.gpu.forEachIndexed { index, gpuData -> updateGpuData(gpuData, index) }
+        updateMedia(data.media)
 
         document.getElementById("os")?.textContent = data.os
         document.getElementById("uptime")?.textContent = data.uptime.formatTime()
