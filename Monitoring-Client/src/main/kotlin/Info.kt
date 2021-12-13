@@ -105,4 +105,9 @@ fun updateGpuData(data: GpuData, index: Int) {
 
 fun updateMedia(data: UIMediaInfo) {
     Media.instance.update(data)
+    if (data.on) {
+        document.getElementById("uptime")?.setAttribute("style", "top: 60px")
+    } else {
+        document.getElementById("uptime")?.removeAttribute("style")
+    }
 }

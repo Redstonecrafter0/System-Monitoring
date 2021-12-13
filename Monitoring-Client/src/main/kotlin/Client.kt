@@ -122,6 +122,7 @@ fun main() {
         data.memoryInfo.forEachIndexed { index, memoryInfo -> updateMemoryInfo(memoryInfo, index) }
         data.gpu.forEachIndexed { index, gpuData -> updateGpuData(gpuData, index) }
         updateMedia(data.media)
+        document.getElementById("cpu-temp")?.textContent = ((data.cpu[0].temp * 10).roundToInt() / 10F).toString()
 
         document.getElementById("os")?.textContent = data.os
         document.getElementById("uptime")?.textContent = data.uptime.formatTime()
