@@ -20,6 +20,32 @@ body {
     color: white;
     font-family: "JetBrains Mono", sans-serif;
 }
+#hide {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: black;
+    text-align: center;
+    z-index: 10000;
+}
+.unhide {
+    animation: unhide var(--anim-time) linear;
+    opacity: 0;
+}
+@keyframes unhide {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
 #cpu-temp {
     position: fixed;
     top: 3px;
@@ -37,9 +63,9 @@ body {
     display: grid;
     width: 100%;
     grid-template-areas:
-            'g g g'
-            'd n p';
-    grid-template-columns: repeat(3, 1fr);
+            'g'
+            'd';
+    grid-template-columns: repeat(1, 1fr);
 }
 #os {
     position: fixed;

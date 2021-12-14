@@ -126,6 +126,7 @@ fun main() {
 
         document.getElementById("os")?.textContent = data.os
         document.getElementById("uptime")?.textContent = data.uptime.formatTime()
+        document.getElementById("hide")?.className = "unhide"
         null
     }
 }
