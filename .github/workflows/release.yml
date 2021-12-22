@@ -34,4 +34,4 @@ jobs:
     - name: Release
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: 'hub release create -a "./target/system-monitoring-\$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout).jar" -a ChromeIntegration.zip -F RELEASE_NOTE.md v$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)"
+      run: 'hub release create -a ./target/system-monitoring-$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout).jar -a ChromeIntegration.zip -F RELEASE_NOTE.md v$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)"
