@@ -2,7 +2,8 @@ name: Release
 
 on:
   push:
-    branches: [ master ]
+    branches:
+      - master
 
 jobs:
   release:
@@ -32,6 +33,6 @@ jobs:
     - name: Create Release Note
       run: 'sed -i "s/{{ VERSION }}/$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)/" RELEASE_NOTE.md'
     - name: Release
+      run: 'hub release create -a ./target/system-monitoring-$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout).jar -a ChromeIntegration.zip -F RELEASE_NOTE.md v$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: 'hub release create -a ./target/system-monitoring-$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout).jar -a ChromeIntegration.zip -F RELEASE_NOTE.md v$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)'

@@ -16,7 +16,7 @@ fun updateCpuInfo(data: CpuData) {
         element.setAttribute("to", (data.usage).toString())
         val e = element.getElementsByClassName("cpu-rad-progressbar")[0]
         e?.setAttribute("data-core", data.core.toString())
-        e?.setAttribute("data-freq", (data.clock / 1000000F).toString())
+        e?.setAttribute("data-freq", (data.clock / 1000000L).toString())
         e?.setAttribute("data-power", data.wattage.toString())
     } else {
         document.getElementById("cores")!!.append {
