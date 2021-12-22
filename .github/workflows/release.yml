@@ -28,7 +28,7 @@ jobs:
     - name: Build with Maven
       run: 'mvn -B package --file pom.xml'
     - name: Pack Chrome Extension
-      run: "zip ChromeIntegration.zip Chrome-Integration"
+      run: "zip -r ChromeIntegration.zip Chrome-Integration"
     - name: Create Release Note
       run: 'sed -i "s/{{ VERSION }}/$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)/" RELEASE_NOTE.md'
     - name: Release
