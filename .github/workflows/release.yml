@@ -16,6 +16,8 @@ jobs:
         java-version: '11'
         distribution: 'adopt'
         cache: maven
+    - name: Setup
+      run: 'chmod +x ./Monitoring-Client/gradlew'
     - name: Build with Gradle
       uses: gradle/gradle-build-action@4137be6a8bf7d7133955359dbd952c0ca73b1021
       with:
