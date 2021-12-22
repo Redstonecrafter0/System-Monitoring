@@ -27,9 +27,11 @@ jobs:
       run: 'mkdir src/main/resources/static -p && cp -rv Monitoring-Client/build/distributions/* src/main/resources/static/'
     - name: Build with Maven
       run: 'mvn -B package --file pom.xml'
+    - name: Pack Chrome Extension
+      run: "zip ChromeIntegration.zip Chrome-Integration"
     - name: Create Release Note
       run: "sed -i 's/{{ VERSION }}/$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)/' RELEASE_NOTE.md"
     - name: Release
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: 'hub release create -a "./target/system-monitoring-$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout).jar" -F RELEASE_NOTE.md v$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)'
+      run: "hub release create -a './target/system-monitoring-\"$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)\".jar' -F RELEASE_NOTE.md v$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)"
