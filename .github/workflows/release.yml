@@ -30,4 +30,4 @@ jobs:
     - name: Create Release Note
       run: "sed -i 's/{{ VERSION }}/$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)/' RELEASE_NOTE.md"
     - name: Release
-      run: 'hub release create -a ./target/system-monitoring-$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout).jar v$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)'
+      run: 'hub release create -a ./target/system-monitoring-$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout).jar -F RELEASE_NOTE.md v$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)'
