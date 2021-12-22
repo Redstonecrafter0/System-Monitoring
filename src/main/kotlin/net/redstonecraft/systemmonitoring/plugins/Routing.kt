@@ -13,8 +13,9 @@ fun Application.configureRouting() {
         get("/api/data") {
             call.respond(SystemMonitoring.lastData)
         }
-        static("/static") {
+        static("/") {
             resources("static")
+            defaultResource("static/index.html")
         }
         install(StatusPages) {
             exception<Throwable> { cause ->

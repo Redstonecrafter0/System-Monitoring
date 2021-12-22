@@ -1,5 +1,8 @@
+import org.w3c.dom.Element
+import org.w3c.dom.HTMLCollection
 import org.w3c.dom.HTMLElement
 import org.w3c.dom.events.Event
+import org.w3c.dom.get
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.roundToInt
@@ -38,6 +41,14 @@ fun Long.formatTime(): String {
 
 fun HTMLElement.addEventListener(s: String, function: (Event) -> Unit) {
     addEventListener(s, function, null)
+}
+
+fun HTMLCollection.toList(): List<Element> {
+    val list = mutableListOf<Element>()
+    for (i in 0 until length) {
+        list.add(this[i]!!)
+    }
+    return list
 }
 
 operator fun Long.plus(string: String): String = this.toString() + string

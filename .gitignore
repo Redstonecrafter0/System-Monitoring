@@ -3,3 +3,4 @@ target
 build
 *.iml
 .gradle
+src/main/resources/static

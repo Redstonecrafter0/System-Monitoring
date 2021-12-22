@@ -107,7 +107,43 @@ fun updateMedia(data: UIMediaInfo) {
     Media.instance.update(data)
     if (data.on) {
         document.getElementById("uptime")?.setAttribute("style", "top: 60px")
+        document.getElementById("grid")?.setAttribute("style", "height: calc(100vh - 60px); top: 60px")
     } else {
         document.getElementById("uptime")?.removeAttribute("style")
+        document.getElementById("grid")?.removeAttribute("style")
+    }
+}
+
+fun updateDisk(data: DiskData, index: Int) {
+    val element = document.getElementById("disk_$index")
+    if (element == null) {
+        document.getElementById("io")?.append {
+            div(classes = "drive") {
+                id = "disk_$index"
+                img(src = "img/hard_drive.svg")
+                div(classes = "name") {
+                    +data.name
+                }
+                div(classes = "size") {
+                    +data.size.formatBytes()
+                }
+                div(classes = "partitions") {
+                    for (part in data.partitions) {
+                        div(classes = "partition") {
+                            attributes["style"] = "--used: ${part.used.toDouble() / part.available.toDouble()}"
+                            div(classes = "used-percent")
+                            div(classes = "text") {
+                                +"${part.volume} (${part.name}) ${part.used.formatBytes()}/${part.available.formatBytes()} ${part.type}"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    } else {
+        for ((i, part) in data.partitions.withIndex()) {
+            element.getElementsByClassName("text")[i]?.textContent = "${part.volume} (${part.name}) ${part.used.formatBytes()}/${part.available.formatBytes()} ${part.type}"
+            element.getElementsByClassName("partition")[i]?.setAttribute("style", "--used: ${part.used.toDouble() / part.available.toDouble()}")
+        }
     }
 }
