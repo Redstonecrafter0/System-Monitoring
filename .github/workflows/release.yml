@@ -28,6 +28,6 @@ jobs:
     - name: Build with Maven
       run: 'mvn -B package --file pom.xml'
     - name: Create Release Note
-      run: "sed -i 's/\\{\\{VERSION\\}\\}/$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)/' RELEASE_NOTE.md"
+      run: "sed -i 's/{{ VERSION }}/$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)/' RELEASE_NOTE.md"
     - name: Release
       run: 'hub release create -a ./target/system-monitoring-$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout).jar v$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)'
