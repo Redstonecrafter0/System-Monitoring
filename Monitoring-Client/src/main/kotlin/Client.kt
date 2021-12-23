@@ -1,5 +1,6 @@
 import io.ktor.client.*
 import io.ktor.client.features.websocket.*
+import io.ktor.http.*
 import io.ktor.http.cio.websocket.*
 import kotlinx.browser.*
 import kotlinx.html.*
@@ -30,7 +31,7 @@ suspend fun main() {
     }
     while (true) {
         try {
-            client.webSocket(port = URLSearchParams(window.location.search.substring(1)).get("port")?.toInt() ?: 1234, path = "/api/ws/data") {
+            client.webSocket(host = window.location.hostname, port = if (window.location.port == "") DEFAULT_PORT else window.location.port.toInt() , path = "/api/ws/data") {
                 for (frame in incoming) {
                     if (frame is Frame.Text) {
                         val data = Json.decodeFromString<Data>(frame.readText())
