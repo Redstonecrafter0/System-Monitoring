@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>net.redstonecraft</groupId>
     <artifactId>system-monitoring</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <name>System-Monitoring</name>
     <description>System-Monitoring</description>
     <properties>

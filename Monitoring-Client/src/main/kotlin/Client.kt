@@ -31,7 +31,7 @@ suspend fun main() {
     }
     while (true) {
         try {
-            client.webSocket(host = window.location.host, port = if (window.location.port == "") DEFAULT_PORT else window.location.port.toInt() , path = "/api/ws/data") {
+            client.webSocket(host = window.location.hostname, port = if (window.location.port == "") DEFAULT_PORT else window.location.port.toInt() , path = "/api/ws/data") {
                 for (frame in incoming) {
                     if (frame is Frame.Text) {
                         val data = Json.decodeFromString<Data>(frame.readText())
