@@ -1,0 +1,8 @@
+{
+  "modules": [
+    {
+      "name": "system-monitoring",
+      "languageLevel": 5
+    }
+  ]
+}

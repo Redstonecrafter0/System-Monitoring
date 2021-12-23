@@ -1,0 +1,85 @@
+{"version":"3","listProblem":[{
+  "tool": "Code Inspection",
+  "category": "Kotlin",
+  "type": "Maven and IDE plugins versions are different",
+  "severity": "High",
+  "comment": "Kotlin version that is used for building with Maven (1.6.0) differs from the one bundled into the IDE plugin (1.5.10)",
+  "detailsInfo": "Reports the Maven plugin version of the Kotlin compiler that is different from the one that is used in the IDE plugin.\n\nThis inconsistency may lead to different error reporting behavior in the IDE and the compiler",
+  "sources": [
+    {
+      "type": "file",
+      "path": "pom.xml",
+      "language": "XML",
+      "line": 85,
+      "offset": 26,
+      "length": 17,
+      "code": {
+        "startLine": 83,
+        "length": 17,
+        "offset": 142,
+        "surroundingCode": "                <artifactId>kotlin-maven-plugin</artifactId>\n                <groupId>org.jetbrains.kotlin</groupId>\n                <version>${kotlin_version}</version>\n                <configuration>\n                    <compilerPlugins>"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "system-monitoring",
+    "inspectionName": "DifferentKotlinMavenVersion"
+  },
+  "hash": "342682ae6fdc3b7702be3d69e9e1ab5ec7e8552a15eb32bba65e3717675f3ef8"
+},{
+  "tool": "Code Inspection",
+  "category": "Probable bugs",
+  "type": "Control flow with empty body",
+  "severity": "High",
+  "comment": "'for' has empty body",
+  "detailsInfo": "Reports `if`, `while`, `do` or `for` statements with empty bodies.\n\nWhile occasionally intended, this construction is confusing and often the result of a typo.\n\nA quick-fix removes a statement.\n\n**Example:**\n\n\n      if (a > b) {}\n",
+  "sources": [
+    {
+      "type": "file",
+      "path": "src/main/kotlin/net/redstonecraft/systemmonitoring/plugins/Sockets.kt",
+      "language": "kotlin",
+      "line": 27,
+      "offset": 13,
+      "length": 3,
+      "code": {
+        "startLine": 25,
+        "length": 3,
+        "offset": 55,
+        "surroundingCode": "            SystemMonitoring.ws.add(this)\n\n            for (frame in incoming) { }\n\n            SystemMonitoring.ws.remove(this)"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "system-monitoring",
+    "inspectionName": "ControlFlowWithEmptyBody"
+  },
+  "hash": "eb938116e8ac5665671e99a0ab07c0695955bf45b8801acfba571706fa03a7b8"
+},{
+  "tool": "Code Inspection",
+  "category": "Kotlin",
+  "type": "kotlin-test-junit could be used",
+  "severity": "High",
+  "comment": "'kotlin-test-junit' is recommended",
+  "detailsInfo": "Reports usage of `kotlin-test` and `junit` dependency without `kotlin-test-junit`.\n\nIt is recommended to use `kotlin-test-junit` dependency to work with Kotlin and JUnit.",
+  "sources": [
+    {
+      "type": "file",
+      "path": "pom.xml",
+      "language": "XML",
+      "line": 67,
+      "offset": 25,
+      "length": 11,
+      "code": {
+        "startLine": 65,
+        "length": 11,
+        "offset": 97,
+        "surroundingCode": "        <dependency>\n            <groupId>org.jetbrains.kotlin</groupId>\n            <artifactId>kotlin-test</artifactId>\n            <version>${kotlin_version}</version>\n            <scope>test</scope>"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "system-monitoring",
+    "inspectionName": "KotlinTestJUnit"
+  },
+  "hash": "b7dccab113da75ce00b2ce63016c7bf053e6768dc7936e7459739a23feec1e8a"
+}]}
