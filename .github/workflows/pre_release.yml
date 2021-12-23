@@ -32,7 +32,8 @@ jobs:
       run: "zip -r ChromeIntegration.zip Chrome-Integration"
     - name: Create Release Note
       run: 'sed -i "s/{{ VERSION }}/$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)-dev+$GITHUB_SHA/" RELEASE_NOTE.md'
-    - name: Release
-      run: 'hub release create -p -a "./target/system-monitoring-$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout).jar#system-monitoring-$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)-dev+$GITHUB_SHA.jar" -a ChromeIntegration.zip -F RELEASE_NOTE.md v$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)-dev+$GITHUB_SHA'
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Upload built jar
+      uses: actions/upload-artifact@v2
+      with:
+        name: Output jars
+        path: target/*.jar
