@@ -149,7 +149,7 @@ object SystemMonitoring {
                                     available = fs?.totalSpace ?: 0,
                                     used = (fs?.totalSpace ?: 0) - (fs?.freeSpace ?: 0),
                                     free = fs?.freeSpace ?: 0,
-                                    percent = if (fs == null) .0 else (fs.totalSpace - fs.freeSpace) / fs.totalSpace.toDouble(),
+                                    percent = (if (fs == null) .0 else (fs.totalSpace - fs.freeSpace) / fs.totalSpace.toDouble()).let { n -> if (n.isNaN()) .0 else n },
                                     type = fs?.type ?: "N/A"
                                 )
                             }
