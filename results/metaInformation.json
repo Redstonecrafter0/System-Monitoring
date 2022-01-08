@@ -4,13 +4,6 @@
     "Code Inspection": 2
   },
   "attributes": {
-    "vcs": {
-      "sarifIdea": {
-        "repositoryUri": "https://github.com/Redstonecrafter0/System-Monitoring",
-        "revisionId": "8b3be0f7d0f6e84688157ff14e4c5cef2e841f0a",
-        "branch": "dev"
-      }
-    },
     "deviceId": "200820300000000-28fc-d2cb-38eb-db78218505b6"
   }
 }
