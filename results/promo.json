@@ -1,32 +1,32 @@
 {"version":"3","listProblem":[{
   "tool": "Code Inspection",
   "category": "Redundant constructs",
-  "type": "Unused import directive",
+  "type": "Unused symbol",
   "tags": [
     "kotlin"
   ],
   "severity": "High",
-  "comment": "Unused import directive",
-  "detailsInfo": "Reports redundant `import` statements.\n\nDefault and unused imports can be safely removed.\n\n**Example:**\n\n\n      import kotlin.*\n      import kotlin.collections.*\n      import kotlin.comparisons.*\n      import kotlin.io.*\n      import kotlin.ranges.*\n      import kotlin.sequences.*\n      import kotlin.text.*\n\n      // jvm specific\n      import java.lang.*\n      import kotlin.jvm.*\n\n      // js specific\n      import kotlin.js.*\n\n      import java.io.* // this import is unused and could be removed\n      import java.util.*\n\n      fun foo(list: ArrayList<String>) {\n          list.add(\"\")\n      }\n",
+  "comment": "Class \"PAUSED\" is never used",
+  "detailsInfo": "Reports symbols that are not used or not reachable from entry points.",
   "sources": [
     {
-      "type": "file",
-      "path": "src/main/kotlin/net/redstonecraft/systemmonitoring/SystemMonitoring.kt",
+      "type": "field",
+      "path": "src/main/kotlin/net/redstonecraft/systemmonitoring/Data.kt",
       "language": "kotlin",
-      "line": 14,
-      "offset": 0,
-      "length": 32,
+      "line": 151,
+      "offset": 19,
+      "length": 6,
       "code": {
-        "startLine": 12,
-        "length": 32,
-        "offset": 52,
-        "surroundingCode": "import java.util.*\nimport kotlin.math.absoluteValue\nimport kotlin.system.exitProcess\n\nobject SystemMonitoring {\n\n    val ws = mutableListOf<DefaultWebSocketSession>()"
+        "startLine": 149,
+        "length": 6,
+        "offset": 44,
+        "surroundingCode": "\nenum class MediaState {\n    NONE, PLAYING, PAUSED\n}\n\n@Serializable"
       }
     }
   ],
   "attributes": {
     "module": "system-monitoring",
-    "inspectionName": "KotlinUnusedImport"
+    "inspectionName": "UnusedSymbol"
   },
-  "hash": "-8607249401901661986"
+  "hash": "5276842315329939747"
 }]}
