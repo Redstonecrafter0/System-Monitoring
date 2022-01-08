@@ -1,23 +1,12 @@
 {
   "libraries": [
     {
-      "ideaName": "Maven: io.ktor:ktor-server-core:1.6.6",
+      "ideaName": "Maven: io.ktor:ktor-server-core:1.6.7",
       "unresolved": false,
       "groupId": "io.ktor",
       "artifactId": "ktor-server-core",
-      "version": "1.6.6",
-      "baseVersion": "1.6.6",
-      "type": "jar",
-      "optional": false,
-      "scope": "compile"
-    },
-    {
-      "ideaName": "Maven: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.6.0",
-      "unresolved": false,
-      "groupId": "org.jetbrains.kotlin",
-      "artifactId": "kotlin-stdlib-jdk8",
-      "version": "1.6.0",
-      "baseVersion": "1.6.0",
+      "version": "1.6.7",
+      "baseVersion": "1.6.7",
       "type": "jar",
       "optional": false,
       "scope": "compile"
@@ -67,6 +56,17 @@
       "scope": "compile"
     },
     {
+      "ideaName": "Maven: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.6.0",
+      "unresolved": false,
+      "groupId": "org.jetbrains.kotlin",
+      "artifactId": "kotlin-stdlib-jdk8",
+      "version": "1.6.0",
+      "baseVersion": "1.6.0",
+      "type": "jar",
+      "optional": false,
+      "scope": "compile"
+    },
+    {
       "ideaName": "Maven: org.slf4j:slf4j-api:1.7.32",
       "unresolved": false,
       "groupId": "org.slf4j",
@@ -100,34 +100,34 @@
       "scope": "compile"
     },
     {
-      "ideaName": "Maven: io.ktor:ktor-utils-jvm:1.6.6",
+      "ideaName": "Maven: io.ktor:ktor-utils-jvm:1.6.7",
       "unresolved": false,
       "groupId": "io.ktor",
       "artifactId": "ktor-utils-jvm",
-      "version": "1.6.6",
-      "baseVersion": "1.6.6",
+      "version": "1.6.7",
+      "baseVersion": "1.6.7",
       "type": "jar",
       "optional": false,
       "scope": "compile"
     },
     {
-      "ideaName": "Maven: io.ktor:ktor-io-jvm:1.6.6",
+      "ideaName": "Maven: io.ktor:ktor-io-jvm:1.6.7",
       "unresolved": false,
       "groupId": "io.ktor",
       "artifactId": "ktor-io-jvm",
-      "version": "1.6.6",
-      "baseVersion": "1.6.6",
+      "version": "1.6.7",
+      "baseVersion": "1.6.7",
       "type": "jar",
       "optional": false,
       "scope": "compile"
     },
     {
-      "ideaName": "Maven: io.ktor:ktor-http-jvm:1.6.6",
+      "ideaName": "Maven: io.ktor:ktor-http-jvm:1.6.7",
       "unresolved": false,
       "groupId": "io.ktor",
       "artifactId": "ktor-http-jvm",
-      "version": "1.6.6",
-      "baseVersion": "1.6.6",
+      "version": "1.6.7",
+      "baseVersion": "1.6.7",
       "type": "jar",
       "optional": false,
       "scope": "compile"
@@ -166,45 +166,45 @@
       "scope": "runtime"
     },
     {
-      "ideaName": "Maven: io.ktor:ktor-server-host-common:1.6.6",
+      "ideaName": "Maven: io.ktor:ktor-server-host-common:1.6.7",
       "unresolved": false,
       "groupId": "io.ktor",
       "artifactId": "ktor-server-host-common",
-      "version": "1.6.6",
-      "baseVersion": "1.6.6",
+      "version": "1.6.7",
+      "baseVersion": "1.6.7",
       "type": "jar",
       "optional": false,
       "scope": "compile"
     },
     {
-      "ideaName": "Maven: io.ktor:ktor-http-cio-jvm:1.6.6",
+      "ideaName": "Maven: io.ktor:ktor-http-cio-jvm:1.6.7",
       "unresolved": false,
       "groupId": "io.ktor",
       "artifactId": "ktor-http-cio-jvm",
-      "version": "1.6.6",
-      "baseVersion": "1.6.6",
+      "version": "1.6.7",
+      "baseVersion": "1.6.7",
       "type": "jar",
       "optional": false,
       "scope": "compile"
     },
     {
-      "ideaName": "Maven: io.ktor:ktor-network-jvm:1.6.6",
+      "ideaName": "Maven: io.ktor:ktor-network-jvm:1.6.7",
       "unresolved": false,
       "groupId": "io.ktor",
       "artifactId": "ktor-network-jvm",
-      "version": "1.6.6",
-      "baseVersion": "1.6.6",
+      "version": "1.6.7",
+      "baseVersion": "1.6.7",
       "type": "jar",
       "optional": false,
       "scope": "compile"
     },
     {
-      "ideaName": "Maven: io.ktor:ktor-serialization:1.6.6",
+      "ideaName": "Maven: io.ktor:ktor-serialization:1.6.7",
       "unresolved": false,
       "groupId": "io.ktor",
       "artifactId": "ktor-serialization",
-      "version": "1.6.6",
-      "baseVersion": "1.6.6",
+      "version": "1.6.7",
+      "baseVersion": "1.6.7",
       "type": "jar",
       "optional": false,
       "scope": "compile"
@@ -232,23 +232,23 @@
       "scope": "compile"
     },
     {
-      "ideaName": "Maven: io.ktor:ktor-websockets:1.6.6",
+      "ideaName": "Maven: io.ktor:ktor-websockets:1.6.7",
       "unresolved": false,
       "groupId": "io.ktor",
       "artifactId": "ktor-websockets",
-      "version": "1.6.6",
-      "baseVersion": "1.6.6",
+      "version": "1.6.7",
+      "baseVersion": "1.6.7",
       "type": "jar",
       "optional": false,
       "scope": "compile"
     },
     {
-      "ideaName": "Maven: io.ktor:ktor-server-netty:1.6.6",
+      "ideaName": "Maven: io.ktor:ktor-server-netty:1.6.7",
       "unresolved": false,
       "groupId": "io.ktor",
       "artifactId": "ktor-server-netty",
-      "version": "1.6.6",
-      "baseVersion": "1.6.6",
+      "version": "1.6.7",
+      "baseVersion": "1.6.7",
       "type": "jar",
       "optional": false,
       "scope": "compile"
@@ -408,243 +408,12 @@
       "scope": "compile"
     },
     {
-      "ideaName": "Maven: io.ktor:ktor-server-tests:1.6.6",
-      "unresolved": false,
-      "groupId": "io.ktor",
-      "artifactId": "ktor-server-tests",
-      "version": "1.6.6",
-      "baseVersion": "1.6.6",
-      "type": "jar",
-      "optional": false,
-      "scope": "test"
-    },
-    {
-      "ideaName": "Maven: io.ktor:ktor-server-test-host:1.6.6",
-      "unresolved": false,
-      "groupId": "io.ktor",
-      "artifactId": "ktor-server-test-host",
-      "version": "1.6.6",
-      "baseVersion": "1.6.6",
-      "type": "jar",
-      "optional": false,
-      "scope": "test"
-    },
-    {
-      "ideaName": "Maven: io.ktor:ktor-network-tls-jvm:1.6.6",
-      "unresolved": false,
-      "groupId": "io.ktor",
-      "artifactId": "ktor-network-tls-jvm",
-      "version": "1.6.6",
-      "baseVersion": "1.6.6",
-      "type": "jar",
-      "optional": false,
-      "scope": "test"
-    },
-    {
-      "ideaName": "Maven: io.ktor:ktor-network-tls-certificates:1.6.6",
-      "unresolved": false,
-      "groupId": "io.ktor",
-      "artifactId": "ktor-network-tls-certificates",
-      "version": "1.6.6",
-      "baseVersion": "1.6.6",
-      "type": "jar",
-      "optional": false,
-      "scope": "test"
-    },
-    {
-      "ideaName": "Maven: io.ktor:ktor-client-core-jvm:1.6.6",
-      "unresolved": false,
-      "groupId": "io.ktor",
-      "artifactId": "ktor-client-core-jvm",
-      "version": "1.6.6",
-      "baseVersion": "1.6.6",
-      "type": "jar",
-      "optional": false,
-      "scope": "test"
-    },
-    {
-      "ideaName": "Maven: io.ktor:ktor-client-jetty:1.6.6",
-      "unresolved": false,
-      "groupId": "io.ktor",
-      "artifactId": "ktor-client-jetty",
-      "version": "1.6.6",
-      "baseVersion": "1.6.6",
-      "type": "jar",
-      "optional": false,
-      "scope": "test"
-    },
-    {
-      "ideaName": "Maven: org.eclipse.jetty:jetty-alpn-openjdk8-client:9.4.42.v20210604",
-      "unresolved": false,
-      "groupId": "org.eclipse.jetty",
-      "artifactId": "jetty-alpn-openjdk8-client",
-      "version": "9.4.42.v20210604",
-      "baseVersion": "9.4.42.v20210604",
-      "type": "jar",
-      "optional": false,
-      "scope": "test"
-    },
-    {
-      "ideaName": "Maven: org.eclipse.jetty:jetty-alpn-java-client:9.4.42.v20210604",
-      "unresolved": false,
-      "groupId": "org.eclipse.jetty",
-      "artifactId": "jetty-alpn-java-client",
-      "version": "9.4.42.v20210604",
-      "baseVersion": "9.4.42.v20210604",
-      "type": "jar",
-      "optional": false,
-      "scope": "test"
-    },
-    {
-      "ideaName": "Maven: io.ktor:ktor-client-cio-jvm:1.6.6",
-      "unresolved": false,
-      "groupId": "io.ktor",
-      "artifactId": "ktor-client-cio-jvm",
-      "version": "1.6.6",
-      "baseVersion": "1.6.6",
-      "type": "jar",
-      "optional": false,
-      "scope": "test"
-    },
-    {
-      "ideaName": "Maven: org.eclipse.jetty.http2:http2-client:9.4.42.v20210604",
-      "unresolved": false,
-      "groupId": "org.eclipse.jetty.http2",
-      "artifactId": "http2-client",
-      "version": "9.4.42.v20210604",
-      "baseVersion": "9.4.42.v20210604",
-      "type": "jar",
-      "optional": false,
-      "scope": "test"
-    },
-    {
-      "ideaName": "Maven: org.eclipse.jetty.http2:http2-common:9.4.42.v20210604",
-      "unresolved": false,
-      "groupId": "org.eclipse.jetty.http2",
-      "artifactId": "http2-common",
-      "version": "9.4.42.v20210604",
-      "baseVersion": "9.4.42.v20210604",
-      "type": "jar",
-      "optional": false,
-      "scope": "test"
-    },
-    {
-      "ideaName": "Maven: org.eclipse.jetty.http2:http2-hpack:9.4.42.v20210604",
-      "unresolved": false,
-      "groupId": "org.eclipse.jetty.http2",
-      "artifactId": "http2-hpack",
-      "version": "9.4.42.v20210604",
-      "baseVersion": "9.4.42.v20210604",
-      "type": "jar",
-      "optional": false,
-      "scope": "test"
-    },
-    {
-      "ideaName": "Maven: org.eclipse.jetty:jetty-alpn-client:9.4.42.v20210604",
-      "unresolved": false,
-      "groupId": "org.eclipse.jetty",
-      "artifactId": "jetty-alpn-client",
-      "version": "9.4.42.v20210604",
-      "baseVersion": "9.4.42.v20210604",
-      "type": "jar",
-      "optional": false,
-      "scope": "test"
-    },
-    {
-      "ideaName": "Maven: org.eclipse.jetty:jetty-client:9.4.42.v20210604",
-      "unresolved": false,
-      "groupId": "org.eclipse.jetty",
-      "artifactId": "jetty-client",
-      "version": "9.4.42.v20210604",
-      "baseVersion": "9.4.42.v20210604",
-      "type": "jar",
-      "optional": false,
-      "scope": "test"
-    },
-    {
-      "ideaName": "Maven: org.eclipse.jetty:jetty-http:9.4.42.v20210604",
-      "unresolved": false,
-      "groupId": "org.eclipse.jetty",
-      "artifactId": "jetty-http",
-      "version": "9.4.42.v20210604",
-      "baseVersion": "9.4.42.v20210604",
-      "type": "jar",
-      "optional": false,
-      "scope": "test"
-    },
-    {
-      "ideaName": "Maven: org.eclipse.jetty:jetty-util:9.4.42.v20210604",
-      "unresolved": false,
-      "groupId": "org.eclipse.jetty",
-      "artifactId": "jetty-util",
-      "version": "9.4.42.v20210604",
-      "baseVersion": "9.4.42.v20210604",
-      "type": "jar",
-      "optional": false,
-      "scope": "test"
-    },
-    {
-      "ideaName": "Maven: org.eclipse.jetty:jetty-io:9.4.42.v20210604",
-      "unresolved": false,
-      "groupId": "org.eclipse.jetty",
-      "artifactId": "jetty-io",
-      "version": "9.4.42.v20210604",
-      "baseVersion": "9.4.42.v20210604",
-      "type": "jar",
-      "optional": false,
-      "scope": "test"
-    },
-    {
-      "ideaName": "Maven: org.eclipse.jetty.http2:http2-http-client-transport:9.4.42.v20210604",
-      "unresolved": false,
-      "groupId": "org.eclipse.jetty.http2",
-      "artifactId": "http2-http-client-transport",
-      "version": "9.4.42.v20210604",
-      "baseVersion": "9.4.42.v20210604",
-      "type": "jar",
-      "optional": false,
-      "scope": "test"
-    },
-    {
-      "ideaName": "Maven: junit:junit:4.13.2",
-      "unresolved": false,
-      "groupId": "junit",
-      "artifactId": "junit",
-      "version": "4.13.2",
-      "baseVersion": "4.13.2",
-      "type": "jar",
-      "optional": false,
-      "scope": "test"
-    },
-    {
-      "ideaName": "Maven: org.hamcrest:hamcrest-core:1.3",
-      "unresolved": false,
-      "groupId": "org.hamcrest",
-      "artifactId": "hamcrest-core",
-      "version": "1.3",
-      "baseVersion": "1.3",
-      "type": "jar",
-      "optional": false,
-      "scope": "test"
-    },
-    {
-      "ideaName": "Maven: org.jetbrains.kotlinx:kotlinx-coroutines-debug:1.5.2-native-mt",
-      "unresolved": false,
-      "groupId": "org.jetbrains.kotlinx",
-      "artifactId": "kotlinx-coroutines-debug",
-      "version": "1.5.2-native-mt",
-      "baseVersion": "1.5.2-native-mt",
-      "type": "jar",
-      "optional": false,
-      "scope": "test"
-    },
-    {
-      "ideaName": "Maven: com.github.oshi:oshi-core:5.8.5",
+      "ideaName": "Maven: com.github.oshi:oshi-core:5.8.6",
       "unresolved": false,
       "groupId": "com.github.oshi",
       "artifactId": "oshi-core",
-      "version": "5.8.5",
-      "baseVersion": "5.8.5",
+      "version": "5.8.6",
+      "baseVersion": "5.8.6",
       "type": "jar",
       "optional": false,
       "scope": "compile"
@@ -670,17 +439,6 @@
       "type": "jar",
       "optional": false,
       "scope": "compile"
-    },
-    {
-      "ideaName": "Maven: org.jetbrains.kotlin:kotlin-test:1.6.0",
-      "unresolved": false,
-      "groupId": "org.jetbrains.kotlin",
-      "artifactId": "kotlin-test",
-      "version": "1.6.0",
-      "baseVersion": "1.6.0",
-      "type": "jar",
-      "optional": false,
-      "scope": "test"
     }
   ]
 }

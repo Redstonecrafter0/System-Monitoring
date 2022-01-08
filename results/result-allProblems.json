@@ -10,11 +10,11 @@
       "type": "file",
       "path": "pom.xml",
       "language": "XML",
-      "line": 85,
+      "line": 78,
       "offset": 26,
       "length": 17,
       "code": {
-        "startLine": 83,
+        "startLine": 76,
         "length": 17,
         "offset": 142,
         "surroundingCode": "                <artifactId>kotlin-maven-plugin</artifactId>\n                <groupId>org.jetbrains.kotlin</groupId>\n                <version>${kotlin_version}</version>\n                <configuration>\n                    <compilerPlugins>"
@@ -25,7 +25,7 @@
     "module": "system-monitoring",
     "inspectionName": "DifferentKotlinMavenVersion"
   },
-  "hash": "342682ae6fdc3b7702be3d69e9e1ab5ec7e8552a15eb32bba65e3717675f3ef8"
+  "hash": "c9538645a74e211c1c7007554c63572a40f637de1d0b13c9a244fef659e024f1"
 },{
   "tool": "Code Inspection",
   "category": "Probable bugs",
@@ -54,32 +54,4 @@
     "inspectionName": "ControlFlowWithEmptyBody"
   },
   "hash": "eb938116e8ac5665671e99a0ab07c0695955bf45b8801acfba571706fa03a7b8"
-},{
-  "tool": "Code Inspection",
-  "category": "Kotlin",
-  "type": "kotlin-test-junit could be used",
-  "severity": "High",
-  "comment": "'kotlin-test-junit' is recommended",
-  "detailsInfo": "Reports usage of `kotlin-test` and `junit` dependency without `kotlin-test-junit`.\n\nIt is recommended to use `kotlin-test-junit` dependency to work with Kotlin and JUnit.",
-  "sources": [
-    {
-      "type": "file",
-      "path": "pom.xml",
-      "language": "XML",
-      "line": 67,
-      "offset": 25,
-      "length": 11,
-      "code": {
-        "startLine": 65,
-        "length": 11,
-        "offset": 97,
-        "surroundingCode": "        <dependency>\n            <groupId>org.jetbrains.kotlin</groupId>\n            <artifactId>kotlin-test</artifactId>\n            <version>${kotlin_version}</version>\n            <scope>test</scope>"
-      }
-    }
-  ],
-  "attributes": {
-    "module": "system-monitoring",
-    "inspectionName": "KotlinTestJUnit"
-  },
-  "hash": "b7dccab113da75ce00b2ce63016c7bf053e6768dc7936e7459739a23feec1e8a"
 }]}

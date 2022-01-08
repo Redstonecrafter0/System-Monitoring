@@ -29,11 +29,7 @@
           "type": "Own sources"
         },
         {
-          "name": "Maven: io.ktor:ktor-server-core:1.6.6",
-          "type": "Library"
-        },
-        {
-          "name": "Maven: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.6.0",
+          "name": "Maven: io.ktor:ktor-server-core:1.6.7",
           "type": "Library"
         },
         {
@@ -53,6 +49,10 @@
           "type": "Library"
         },
         {
+          "name": "Maven: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.6.0",
+          "type": "Library"
+        },
+        {
           "name": "Maven: org.slf4j:slf4j-api:1.7.32",
           "type": "Library"
         },
@@ -65,15 +65,15 @@
           "type": "Library"
         },
         {
-          "name": "Maven: io.ktor:ktor-utils-jvm:1.6.6",
+          "name": "Maven: io.ktor:ktor-utils-jvm:1.6.7",
           "type": "Library"
         },
         {
-          "name": "Maven: io.ktor:ktor-io-jvm:1.6.6",
+          "name": "Maven: io.ktor:ktor-io-jvm:1.6.7",
           "type": "Library"
         },
         {
-          "name": "Maven: io.ktor:ktor-http-jvm:1.6.6",
+          "name": "Maven: io.ktor:ktor-http-jvm:1.6.7",
           "type": "Library"
         },
         {
@@ -89,19 +89,19 @@
           "type": "Library"
         },
         {
-          "name": "Maven: io.ktor:ktor-server-host-common:1.6.6",
+          "name": "Maven: io.ktor:ktor-server-host-common:1.6.7",
           "type": "Library"
         },
         {
-          "name": "Maven: io.ktor:ktor-http-cio-jvm:1.6.6",
+          "name": "Maven: io.ktor:ktor-http-cio-jvm:1.6.7",
           "type": "Library"
         },
         {
-          "name": "Maven: io.ktor:ktor-network-jvm:1.6.6",
+          "name": "Maven: io.ktor:ktor-network-jvm:1.6.7",
           "type": "Library"
         },
         {
-          "name": "Maven: io.ktor:ktor-serialization:1.6.6",
+          "name": "Maven: io.ktor:ktor-serialization:1.6.7",
           "type": "Library"
         },
         {
@@ -113,11 +113,11 @@
           "type": "Library"
         },
         {
-          "name": "Maven: io.ktor:ktor-websockets:1.6.6",
+          "name": "Maven: io.ktor:ktor-websockets:1.6.7",
           "type": "Library"
         },
         {
-          "name": "Maven: io.ktor:ktor-server-netty:1.6.6",
+          "name": "Maven: io.ktor:ktor-server-netty:1.6.7",
           "type": "Library"
         },
         {
@@ -177,91 +177,7 @@
           "type": "Library"
         },
         {
-          "name": "Maven: io.ktor:ktor-server-tests:1.6.6",
-          "type": "Library"
-        },
-        {
-          "name": "Maven: io.ktor:ktor-server-test-host:1.6.6",
-          "type": "Library"
-        },
-        {
-          "name": "Maven: io.ktor:ktor-network-tls-jvm:1.6.6",
-          "type": "Library"
-        },
-        {
-          "name": "Maven: io.ktor:ktor-network-tls-certificates:1.6.6",
-          "type": "Library"
-        },
-        {
-          "name": "Maven: io.ktor:ktor-client-core-jvm:1.6.6",
-          "type": "Library"
-        },
-        {
-          "name": "Maven: io.ktor:ktor-client-jetty:1.6.6",
-          "type": "Library"
-        },
-        {
-          "name": "Maven: org.eclipse.jetty:jetty-alpn-openjdk8-client:9.4.42.v20210604",
-          "type": "Library"
-        },
-        {
-          "name": "Maven: org.eclipse.jetty:jetty-alpn-java-client:9.4.42.v20210604",
-          "type": "Library"
-        },
-        {
-          "name": "Maven: io.ktor:ktor-client-cio-jvm:1.6.6",
-          "type": "Library"
-        },
-        {
-          "name": "Maven: org.eclipse.jetty.http2:http2-client:9.4.42.v20210604",
-          "type": "Library"
-        },
-        {
-          "name": "Maven: org.eclipse.jetty.http2:http2-common:9.4.42.v20210604",
-          "type": "Library"
-        },
-        {
-          "name": "Maven: org.eclipse.jetty.http2:http2-hpack:9.4.42.v20210604",
-          "type": "Library"
-        },
-        {
-          "name": "Maven: org.eclipse.jetty:jetty-alpn-client:9.4.42.v20210604",
-          "type": "Library"
-        },
-        {
-          "name": "Maven: org.eclipse.jetty:jetty-client:9.4.42.v20210604",
-          "type": "Library"
-        },
-        {
-          "name": "Maven: org.eclipse.jetty:jetty-http:9.4.42.v20210604",
-          "type": "Library"
-        },
-        {
-          "name": "Maven: org.eclipse.jetty:jetty-util:9.4.42.v20210604",
-          "type": "Library"
-        },
-        {
-          "name": "Maven: org.eclipse.jetty:jetty-io:9.4.42.v20210604",
-          "type": "Library"
-        },
-        {
-          "name": "Maven: org.eclipse.jetty.http2:http2-http-client-transport:9.4.42.v20210604",
-          "type": "Library"
-        },
-        {
-          "name": "Maven: junit:junit:4.13.2",
-          "type": "Library"
-        },
-        {
-          "name": "Maven: org.hamcrest:hamcrest-core:1.3",
-          "type": "Library"
-        },
-        {
-          "name": "Maven: org.jetbrains.kotlinx:kotlinx-coroutines-debug:1.5.2-native-mt",
-          "type": "Library"
-        },
-        {
-          "name": "Maven: com.github.oshi:oshi-core:5.8.5",
+          "name": "Maven: com.github.oshi:oshi-core:5.8.6",
           "type": "Library"
         },
         {
@@ -270,10 +186,6 @@
         },
         {
           "name": "Maven: net.java.dev.jna:jna-platform:5.10.0",
-          "type": "Library"
-        },
-        {
-          "name": "Maven: org.jetbrains.kotlin:kotlin-test:1.6.0",
           "type": "Library"
         }
       ]
