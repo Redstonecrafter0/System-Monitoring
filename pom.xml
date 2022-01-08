@@ -4,11 +4,12 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>net.redstonecraft</groupId>
     <artifactId>system-monitoring</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <name>System-Monitoring</name>
     <description>System-Monitoring</description>
+
     <properties>
-        <ktor_version>1.6.6</ktor_version>
+        <ktor_version>1.6.7</ktor_version>
         <kotlin.code.style>official</kotlin.code.style>
         <kotlin_version>1.6.0</kotlin_version>
         <logback_version>1.2.3</logback_version>
@@ -16,59 +17,51 @@
         <kotlin.compiler.incremental>true</kotlin.compiler.incremental>
         <main.class>net.redstonecraft.systemmonitoring.ApplicationKt</main.class>
     </properties>
-    <repositories>
-    </repositories>
+
     <dependencies>
         <dependency>
             <groupId>io.ktor</groupId>
             <artifactId>ktor-server-core</artifactId>
             <version>${ktor_version}</version>
         </dependency>
+
         <dependency>
             <groupId>io.ktor</groupId>
             <artifactId>ktor-server-host-common</artifactId>
             <version>${ktor_version}</version>
         </dependency>
+
         <dependency>
             <groupId>io.ktor</groupId>
             <artifactId>ktor-serialization</artifactId>
             <version>${ktor_version}</version>
         </dependency>
+
         <dependency>
             <groupId>io.ktor</groupId>
             <artifactId>ktor-websockets</artifactId>
             <version>${ktor_version}</version>
         </dependency>
+
         <dependency>
             <groupId>io.ktor</groupId>
             <artifactId>ktor-server-netty</artifactId>
             <version>${ktor_version}</version>
         </dependency>
+
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>${logback_version}</version>
         </dependency>
-        <dependency>
-            <groupId>io.ktor</groupId>
-            <artifactId>ktor-server-tests</artifactId>
-            <version>${ktor_version}</version>
-            <scope>test</scope>
-        </dependency>
 
         <dependency>
             <groupId>com.github.oshi</groupId>
             <artifactId>oshi-core</artifactId>
-            <version>5.8.5</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-test</artifactId>
-            <version>${kotlin_version}</version>
-            <scope>test</scope>
+            <version>5.8.6</version>
         </dependency>
     </dependencies>
+
     <build>
         <sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
         <testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>
@@ -154,4 +147,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>

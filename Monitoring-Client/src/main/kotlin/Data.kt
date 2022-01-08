@@ -108,15 +108,15 @@ data class PowerData(
 
 @Serializable
 data class UIMediaInfo(
-    val on: Boolean,
-    val playing: Boolean,
-    val album: String,
-    val title: String,
-    val artist: String,
-    val duration: String,
-    val currentTime: String,
-    val img: String?,
-    val progress: String
+    @JsName("on") val on: Boolean,
+    @JsName("playing") val playing: Boolean,
+    @JsName("album") val album: String,
+    @JsName("title") val title: String,
+    @JsName("artist") val artist: String,
+    @JsName("duration") val duration: String,
+    @JsName("currentTime") val currentTime: String,
+    @JsName("img") val img: String?,
+    @JsName("progress") val progress: String
 )
 
 @Serializable

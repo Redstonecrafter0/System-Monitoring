@@ -1,6 +1,6 @@
 plugins {
-    kotlin("js") version "1.6.0"
-    kotlin("plugin.serialization") version "1.6.0"
+    kotlin("js") version "1.6.10"
+    kotlin("plugin.serialization") version "1.6.10"
 }
 
 group = "net.redstonecraft"
@@ -11,7 +11,7 @@ repositories {
     maven("https://maven.pkg.jetbrains.space/public/p/kotlinx-html/maven")
 }
 
-val ktor_version = "1.6.6"
+val ktor_version = "1.6.7"
 
 dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-html:0.7.2")
@@ -21,7 +21,7 @@ dependencies {
 }
 
 kotlin {
-    js {
+    js(IR) {
         binaries.executable()
         browser {
             commonWebpackConfig {

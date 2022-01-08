@@ -170,7 +170,8 @@ img {
     }
 
     setThumbnail(url) {
-        if (this.thumbnail.src !== url) {
+        // noinspection EqualityComparisonWithCoercionJS
+        if (this.thumbnail.src !== url && url != undefined) {
             this.thumbnail.src = url
             this.container.style.backgroundImage = `url(${url})`
         }

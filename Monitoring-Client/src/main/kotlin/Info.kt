@@ -1,4 +1,5 @@
 import kotlinx.browser.document
+import kotlinx.browser.window
 import kotlinx.html.dom.append
 import kotlinx.html.id
 import kotlinx.html.js.div
